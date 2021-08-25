@@ -15,16 +15,15 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id');
-            $table->foreignId('product_id');
+            $table->foreignId('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->string('product_name');
             $table->text('address');
             $table->text('phone_number');
             $table->string('short_description');
             $table->unsignedInteger('qty')->nullable();
             $table->decimal('sale_price')->nullable();
-            $table->decimal('total')->nullable();
-            $table->decimal('tax')->nullable();
-            $table->decimal('after_vat')->nullable();
+            $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

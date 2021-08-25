@@ -89,12 +89,12 @@
                 <i class="fas fa-plus mr-3"></i> New Report
             </button> -->
         </header>
-    
+
         <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
             <main class="w-full flex-grow p-6">
                 <!-- <h1 class="text-3xl text-black pb-6">Tables</h1> -->
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-            
+
             <a href="{{route('invoice_post')}}" class="bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none
                    text-white text-sm py-1 px-2 rounded">Sales Invoice</a>
                 <div class="w-full mt-6">
@@ -105,47 +105,51 @@
                         <table class="min-w-full bg-white">
                             <thead class="bg-gray-800 text-white">
                                 <tr>
+
+
                                     <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Product Name</th>
                                     <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Short Description</th>
                                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Sale Price</th>
                                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Quantity</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Images</th>
                                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Actions</th>
-                                   
+
                                 </tr>
                             </thead>
                             <tbody class="text-gray-700">
+{{--                            @foreach($invoice_data as $row)--}}
                                 <tr>
-                                    @foreach($products as $row)
-                                    <td class="w-1/3 text-left py-3 px-4">{{$row->product_name}}</td>
-                                    <td class="w-1/3 text-left py-3 px-4">{{$row->short_description}}</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">{{$row->sale_price}}</a>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">{{$row->quantity}}</a> 
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">{{$row->images}}</a> 
+{{--                                    {{ dd($invoice_data)}}--}}
+
+                                    <td class="w-1/3 text-left py-3 px-4">{{$invoice_data->product_name}}</td>
+                                    <td class="w-1/3 text-left py-3 px-4">{{$invoice_data->short_description}}</td>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">{{$invoice_data->sale_price}}</a>
+                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">{{$invoice_data->qty}}</a>
+
                                 </td>
-                              
-                                  
-                              
+
+
+{{--                            @endforeach--}}
+
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-        
-                                    <!-- <a href="{{url('invoice/delete',$invoice_data->id)}}" class="bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none
+
+                                    <!-- <a href="{{url('invoice/delete',$invoice_data->customer_id)}}" class="bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none
                                             text-white text-sm py-1 px-2 rounded ml-5">Delete</a> -->
-                                            
-                                     <a href="{{url('invoice/view',$invoice_data->id)}}" class="bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none
+
+                                     <a href="{{url('invoice/view',$invoice_data->customer_id)}}" class="bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none
                                             text-white text-sm py-1 px-2 rounded">Invoice Print</a>
-                                </td>   
-                                </tr> 
-                                @endforeach
-                            
+                                </td>
+                                </tr>
+{{--                                {{$data->links()}}--}}
+
+
                             </tbody>
                         </table>
+
                     </div>
-                   
-            <!-- <footer class="w-full bg-white text-right p-4">
-                Built by <a target="_blank" href="" class="underline"></a>.
-            </footer> -->
+
+
         </div>
-        
+
     </div>
 
     <!-- AlpineJS -->

@@ -13,10 +13,11 @@ class Product extends Model
         'short_description',
         'sale_price',
         'quantity',
-        'images' 
-    ];  
-    public function invoice()
-    {
-    return $this->hasMany(Invoice::class);
-    }
+        'images'
+    ];
+//     public function invoice()
+//     {
+////     return $this->hasMany(Invoice::class);
+//         return $this->hasMany('\App\Models\Invoice','product_id','id');
+//     }
 }

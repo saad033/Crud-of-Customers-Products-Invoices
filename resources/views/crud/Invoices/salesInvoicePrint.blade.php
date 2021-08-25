@@ -23,7 +23,7 @@
                 <div class="col-xm-12">
                     <div class="row">
                         <!-- <div class="col-md-4"> <img class="img" alt="Invoce Template" src="" /> </div> -->
-                       
+
                         <div class="col-md-8 text-left">
                             <h4 style="color: #F81D2D;"><strong>Sales Invoice</strong></h4>
                             <p>{{$invoice_data->customer_name}}</p>
@@ -50,21 +50,23 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="col-md-9" value="">{{$product_data->product_name}}</td>
-                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i>${{$product_data->sale_price}} </td>
+
+                                    <td class="col-md-9" value="">{{$invoice_data->product_name}}</td>
+                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i>${{$invoice_data->sale_price}} </td>
+
                                 </tr>
-                                
+
                                 <tr>
-                                    <td class="text-right">
-                                        <p> <strong> Taxes:</strong> </p>
-                                        <p> <strong>Total Amount: </strong> </p>
-                                      
-                                        <p> <strong>Payable Amount: </strong> </p>
-                                    </td>
+{{--                                    <td class="text-right">--}}
+{{--                                        <p> <strong> Taxes:</strong> </p>--}}
+{{--                                        <p> <strong>Total Amount: </strong> </p>--}}
+
+{{--                                        <p> <strong>Payable Amount: </strong> </p>--}}
+{{--                                    </td>--}}
                                     <td>
-                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i>${{$invoice_data->tax}} </strong> </p>
-                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i>${{$invoice_data->after_vat}}</strong> </p>
-                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i>${{$invoice_data->after_vat}}</strong> </p>
+{{--                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i>${{$invoice_data->tax}} </strong> </p>--}}
+{{--                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i>${{$invoice_data->after_vat}}</strong> </p>--}}
+{{--                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i>${{$invoice_data->after_vat}}</strong> </p>--}}
                                     </td>
                                 </tr>
                                 <tr style="color: #F81D2D;">
@@ -72,16 +74,17 @@
                                         <h4><strong>Total:</strong></h4>
                                     </td>
                                     <td class="text-left">
-                                        <h4><strong><i class="fas fa-rupee-sign" area-hidden="true"></i>${{$invoice_data->after_vat}} </strong></h4>
+
+                                        <h4><strong><i class="fas fa-rupee-sign" area-hidden="true"></i>${{$invoice_data->sale_price}} </strong></h4>
                                     </td>
                                 </tr>
                             </tbody>
-                            
+
                         </table>
-                       
-                       
+                        <a href="#" class="btn btn-primary" onclick="print()" style="margin-left:800px">Print</a>
+
                     </div>
-                    
+
 
                     <div>
                         <div class="col-md-12">

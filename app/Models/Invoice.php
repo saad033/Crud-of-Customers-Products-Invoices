@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Invoice extends Model
 {
     use HasFactory;
-  
-    public function product()
+
+    public function customers()
     {
-        
-    return $this->belongsTo(Product::class);
+        return $this->hasMany('\App\Models\Invoice','customer_id','id');
+//        return $this->belongTo(Product::class);
     }
 
 }

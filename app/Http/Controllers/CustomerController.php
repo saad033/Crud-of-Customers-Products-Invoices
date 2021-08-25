@@ -16,8 +16,8 @@ class CustomerController extends Controller
     public function index()
     {
         //
-       
-          return view('crud.customers.createCustomer'); 
+
+          return view('crud.customers.createCustomer');
     }
 
     /**
@@ -29,9 +29,9 @@ class CustomerController extends Controller
     {
         //
         $customers = DB::table('customers')->get();
-       
+
         return view('crud.customers.customer',['customers'=>$customers]);
-  
+
     }
 
     /**
@@ -44,12 +44,12 @@ class CustomerController extends Controller
     {
         //
 
-        
+
         $this->validate($request, [
             'name' => 'required|min:5|max:20',
             'address' => 'required',
             'number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11'
-         
+
          ]);
         // dd($request->all());
          $customer = new Customer();
@@ -57,7 +57,7 @@ class CustomerController extends Controller
          $customer->address = $request->address;
          $customer->phone_number  = $request->number;
          $customer->save();
-         return view('crud.customers.customer',['customers'=>$customer])->with('status','Record Added');
+         return view('crud.customers.createCustomer',['customers'=>$customer])->with('status','Record Added');
     }
 
     /**
@@ -68,8 +68,8 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        
-      
+
+
     }
 
     /**
@@ -82,7 +82,7 @@ class CustomerController extends Controller
     {
         //
         $customer= Customer::find($id);
-     
+
 
         return view('crud.customers.editCustomer',['customer'=>$customer]);
     }
@@ -98,12 +98,12 @@ class CustomerController extends Controller
     {
         //
 
-         
+
         $this->validate($request, [
             'name' => 'required|min:5|max:20',
             'address' => 'required',
             'number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11'
-         
+
          ]);
         $customer = Customer::find($id);
         $customer->name = $request->name;
@@ -125,7 +125,7 @@ class CustomerController extends Controller
         //
         $customer = DB::table('customers')->delete($id);
         // $customer->delete();
-        
+
         return redirect(route('customer_post'))->with('status','Record Deleted');
 
     }

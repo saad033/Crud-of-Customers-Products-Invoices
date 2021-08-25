@@ -11,11 +11,13 @@ class Customer extends Model
     public $fillable = [
         'name',
         'address',
-        'phone' 
+        'phone'
     ];
-    public function invoice()
-    {
-    return $this->hasMany(Invoice::class);
-    }
-    
+//    public function invoice()
+//    {
+////    return $this->hasMany(Invoice::class);
+//        return $this->hasMany('\App\Models\Invoice','customer_id','id');
+//    }
+
+
 }

@@ -32,7 +32,7 @@ Route::get('customer/edit/{id}',[CustomerController::class,'edit'])->name('custo
 Route::put('customer/edit/{id}',[CustomerController::class,'update'])->name('customer_update');
 Route::get('customer/delete/{id}',[CustomerController::class,'destroy'])->name('customer_destroy');
 
-      
+
                     /***Routes for Customers ***/
 Route::get('product',[ProductController::class,'index'])->name('product');
 Route::get('list',[ProductController::class,'create'])->name('product_list');
@@ -50,4 +50,4 @@ Route::get('invoice/edit/{id}',[SalesInvoiceController::class,'edit'])->name('in
 Route::put('invoice/edit/{id}',[SalesInvoiceController::class,'update'])->name('invoice_update');
 Route::put('invoice/delete/{id}',[SalesInvoiceController::class,'destroy'])->name('invoice_delete');
       /** Route for Dashboard */
- Route::get('dashboard',[DashboardController::class,'show'])->name('dashboard');
+ Route::get('dashboard/{id}',[DashboardController::class,'index'])->name('dashboard');

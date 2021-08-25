@@ -17,7 +17,7 @@ class SalesInvoiceController extends Controller
      */
 
     // protected $invoice;
-    
+
     // public function __construct($invoice)
     // {
     //    return $this->invoice = $invoice;
@@ -28,8 +28,8 @@ class SalesInvoiceController extends Controller
     public function index()
     {
         //
-        return view('crud.invoices.salesInvoice');
-        
+      return view('crud.invoices.salesInvoice');
+
     }
 
     /**
@@ -41,16 +41,16 @@ class SalesInvoiceController extends Controller
     {
         //
         $customers = DB::table('customers')->get();
-        
+
         $products = DB::table('products')->get();
         // dd($customers,$products);
 
          return view('crud.invoices.salesInvoice',compact('customers','products'));
-      
+
 
 
     }
-     
+
     /**
      * Store a newly created resource in storage.
      *
@@ -60,19 +60,17 @@ class SalesInvoiceController extends Controller
     public function store(Request $request)
     {
         //
-      
-        // dd($request->all());
+
+//        dd($request->all());
         $post = new Invoice();
         $post->customer_id = $request->name;
         $post->product_id = $request->product_name;
+        $post->product_name = $request->product;
         $post->address = $request->address;
         $post->phone_number = $request->phone_number;
         $post->short_description = $request->desc;
         $post->qty = $request->qty;
         $post->sale_price = $request->value;
-        $post->total = $request->total;
-        $post->tax = $request->tax;
-        $post->after_vat = $request->after_vat;
         $post->save();
         return redirect(route('invoice_post'))->with('status','Post Added');
     }
@@ -88,11 +86,18 @@ class SalesInvoiceController extends Controller
         $invoice = new Invoice();
         $invoice_data = $invoice->select('invoices.*','customers.name as customer_name')
         ->leftJoin('customers','customers.id','invoices.customer_id')
-            ->where('invoices.id',$id)->first();
-            $product = Invoice::find($id);
-            $product_data = $product->product;
-            // dd($invoice_data,$product_data);
-            return view('crud.invoices.salesInvoicePrint',compact('invoice_data','product_data'));
+            ->where('invoices.id',$id)
+            ->with('customers')
+            ->find($id);
+//        $invoice = new Invoice();
+//        $invoice_data = $invoice->select('invoices.*','products.product_name as name')
+//            ->leftJoin('products','products.id','invoices.product_id')
+//            ->with('customers')
+//            ->first($id);
+//           $product = Invoice::find($id);
+//            $product_data = $product->product;
+//                 dd($invoice_data);
+            return view('crud.invoices.salesInvoicePrint',compact('invoice_data'));
     }
 
     /**
@@ -111,7 +116,7 @@ class SalesInvoiceController extends Controller
             $product = Invoice::find($id);
             $product_data = $product->product;
 
-      
+
         return view('crud.invoices.editSalesInvoice',compact('invoice_data','product_data'));
     }
 
@@ -139,7 +144,7 @@ class SalesInvoiceController extends Controller
         $post->save();
         return redirect(route('invoice_post'))->with('status','Post Added');
 
-        
+
 
     }
 
@@ -155,5 +160,5 @@ class SalesInvoiceController extends Controller
         $invoice = DB::table('invoices')->delete($id);
         return redirect(route('invoice_post'))->with('status','Record Deleted');
 
-    }   
+    }
 }
